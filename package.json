@@ -1,0 +1,25 @@
+{
+  "name": "rift",
+  "version": "1.0.0",
+  "description": "HTTP Communication Layer between back-end and front-end",
+  "main": "Rift.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbradleybriggs/Rift.git"
+  },
+  "author": "J. Bradley Briggs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbradleybriggs/Rift/issues"
+  },
+  "homepage": "https://github.com/jbradleybriggs/Rift#readme",
+  "dependencies": {
+    "mysql": "^2.17.1"
+  }
+}

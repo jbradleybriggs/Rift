@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
     <style>
-        form {
+        #main {
             /* Just to center the form on the page */
             margin: 0 auto;
             width: 400px;
@@ -68,10 +68,24 @@
             margin-left: .5em;
         }
     </style>
+    <script src="../axios.js">
+        async function doPost() {
+            var query = "";
+            query += `db=${document.getElementById('db').value}&`;
+            query += `table=${document.getElementById('table').value}&`;
+            query += `op=${document.getElementById('op').value}&`;
+            query += `fields=${document.getElementById('fields').value}&`;
+            query += `conditions=${document.getElementById('conditions').value}`;
+            console.log(query);
+            axios.post("http://localhost:8080/", query).then((res) => {
+                console.log(res);
+            });
+        }
+    </script>
 </head>
 
 <body>
-    <form action="http://localhost:8080/test" method="POST">
+    <div id="main">
         <div>
             <label for="db">Db:</label>
             <input type="text" id="db" name="db" value="">
@@ -86,16 +100,18 @@
         </div>
         <div>
             <label for="field">Fields:</label>
-            <input type="text" id="field" name="fields" value="[]">
+            <input type="text" id="fields" name="fields" value="[]">
         </div>
         <div>
             <label for="cond">Conditions:</label>
-            <input type="text" id="cond" name="conditions" value="{}">
+            <input type="text" id="conditions" name="conditions" value="{}">
         </div>
-        <div class="button">
-            <button type="submit">Do it!</button>
-        </div>
-    </form>
+        <button
+            onclick="axios.post('http://localhost:8080/', 'db=lamp_light&table=movies&op=get&fields=[]&conditions={}').then((res)=> {console.log(res)});">Do
+            it!</button>
+    </div>
+
+
 </body>
 
 </html>

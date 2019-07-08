@@ -11,6 +11,23 @@ the port number in the terminal as an argument:
 ```
 this will run the server on port 9000.
 
+## Getting data from the database
+The first thing we need to do is build a database request; this will allow the server to connect
+to whichever host, database and table you need.
+```js
+  var dbRequest = {
+    host: "localhost", //optional, default 'localhost'
+    username: "your_db_username", //required
+    password: "your_db_password", //required
+    db: "the_db_you_are_connecting_to", //required
+    table: "the_table_in_the_db", //required
+    op: "GET" //or "SET", "DELETE", "SEARCH", //optional, default "GET"
+    fields: ['name', 'surname', 'a_field', 'some_other_field'], //the fields you want to get (if this is [], it will get all the fields)
+    conditions: {}, //
+    options: {group_by: 'a_field', order_by: {'name': 'asc', 'a_field': 'desc'}, limit: 100} //optional 
+  }
+```
+
 ## Connecting to the Server from the Client
 To connect to the server and receive data we want, we need to create a new Request Object:
 ```js
@@ -21,7 +38,7 @@ To connect to the server and receive data we want, we need to create a new Reque
         "Content-Type": "application/json"
         },
     mode: "cors", // specify this to enable data to be sent across different ports
-    body: dbRequest
+    body: JSON.stringify(dbRequest) //send this as a string rather than an object
   }) ;
   
 ```

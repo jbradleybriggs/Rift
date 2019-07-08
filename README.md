@@ -44,9 +44,10 @@ To connect to the server and get the data we want, we need to create a new Reque
 ```
 Now we simply do a fetch() - Note the fetch method returns a Promise that resolves to the Response. By chaining another Promise we can resolve to the Response parsed as JSON:
 ```js
-  fetch(request) //send request to the server, which connects to the db 
+  fetch(request) //send request to the server, which connects to the db and runs a query and sends back a response
   .then((response) => response.json()) //once we have the response, parse it as json
-  .then((result) => { // result is now the 
+  .then((result) => { // result is now the result of the database query
+    //do something with 'result'
   }) ;
 ```
 

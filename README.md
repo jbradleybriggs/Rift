@@ -23,13 +23,13 @@ to whichever host, database and table you need.
     table: "the_table_in_the_db", //required
     op: "GET" //or "SET", "DELETE", "SEARCH", //optional, default "GET"
     fields: ['name', 'surname', 'a_field', 'some_other_field'], //the fields you want to get (if this is [], it will get all the fields)
-    conditions: {}, //
+    conditions: {}, //optional
     options: {group_by: 'a_field', order_by: {'name': 'asc', 'a_field': 'desc'}, limit: 100} //optional 
   }
 ```
 
 ## Connecting to the Server from the Client
-To connect to the server and receive data we want, we need to create a new Request Object:
+To connect to the server and get the data we want, we need to create a new Request Object and pass in the dbRequest:
 ```js
   const url = "http://localhost:8082"; //url to where the server is running, not where the database is stored.
   var request = new Request(url, {
@@ -42,7 +42,11 @@ To connect to the server and receive data we want, we need to create a new Reque
   }) ;
   
 ```
-
-Let's say we want to get data from a database called "media" and a table called "music" on 
-our local machine. 
+Now we simply do a fetch() - Note the fetch method returns a Promise that resolves to the Response. By chaining another Promise we can resolve to the Response parsed as JSON:
+```js
+  fetch(request) //send request to the server, which connects to the db 
+  .then((response) => response.json()) //once we have the response, parse it as json
+  .then((result) => { // result is now the 
+  }) ;
+```
 

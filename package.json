@@ -1,7 +1,7 @@
 {
-  "name": "rift",
-  "version": "1.0.0",
-  "description": "HTTP Communication Layer between back-end and front-end",
+  "name": "@drama_llama/rift",
+  "version": "2.1.0",
+  "description": "Server and Mysql database connector.",
   "main": "Rift.js",
   "directories": {
     "lib": "lib"
